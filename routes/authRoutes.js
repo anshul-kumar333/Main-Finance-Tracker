@@ -58,6 +58,7 @@ router.post("/login", async (req, res) => {
             { expiresIn: "7d" }
         );
 
+        // ✅ IMPORTANT CHANGE
         res.json({
             token,
             user: {
@@ -68,8 +69,10 @@ router.post("/login", async (req, res) => {
         });
 
     } catch (err) {
+        console.error("LOGIN ERROR:", err);
         res.status(500).json({ message: "Server error" });
     }
 });
+
 
 module.exports = router;
